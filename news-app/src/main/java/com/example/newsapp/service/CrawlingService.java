@@ -1,5 +1,6 @@
 package com.example.newsapp.service;
 
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
@@ -12,11 +13,14 @@ public class CrawlingService {
         StringBuilder output = new StringBuilder();
         try {
             // 첫 번째 Python 스크립트 실행
-            Process process1 = Runtime.getRuntime().exec("python D:\\BH\\workspaces\\Python02\\naver_news_crawler.py");
+        	String pythonScript1 = new ClassPathResource("python/naver_news_crawler.py").getFile().getAbsolutePath();
+        	String pythonScript2 = new ClassPathResource("python/weather_api_integration.py").getFile().getAbsolutePath();
+
+        	Process process1 = Runtime.getRuntime().exec(new String[]{"python", pythonScript1});
             System.out.println("process1: " + process1);
 
             // 두 번째 Python 스크립트 실행
-            Process process2 = Runtime.getRuntime().exec("python D:\\BH\\workspaces\\Python02\\weather_api_integration.py");
+            Process process2 = Runtime.getRuntime().exec(new String[]{"python", pythonScript2});
             System.out.println("process2: " + process2);
 
             // 첫 번째 스크립트의 출력 읽기 (UTF-8 인코딩 지정)
