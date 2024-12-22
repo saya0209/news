@@ -20,7 +20,7 @@
 
 ```bash
 # 1. 레포지토리 클론
-git clone https://github.com/saya0209/news
+git clone https://github.com/saya0209/news.git
 
 # 2. 디렉토리 이동
 cd your-repo
